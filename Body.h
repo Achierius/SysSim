@@ -1,7 +1,9 @@
 #ifndef _BODY_H
 #define _BODY_H
 #include <Eigen/Eigen/Dense>
-
+#include <Vector>
+#include "Thruster.h"
+#include "Sensor.h"
 
 class Body{
 public:
@@ -33,7 +35,8 @@ public:
 	void reorderThrusters(int thrusterNo, int placeAfter);
 	void removeThruster(int thrusterNo);
 
-	void thrust(int thrusterNo, double percent);
+	void changeThrust(int thrusterNo, double percent);
+	Eigen::Vector3f calculateThrustVector();
 	void getThruster(int thrusterNo);
 
 
@@ -42,7 +45,15 @@ public:
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
+	std::Vector<Sensor> Sensors;
+	std::Vector<Thruster> Thrusters;
+	Eigen::Vector3f position;
+	Eigen::Vector3f velocity;
+	Eigen::Vector3f acceleration;
+	float radius;
+	float mass;
 
+		
 }; 
 
 
