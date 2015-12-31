@@ -5,16 +5,16 @@
 
 class Body{
 public:
-	Body(Vector3f posInit, Vector3f velInt, Vector3f accInt, float massInit,float radiusInit);
-	Body(Vector3f posInit, float massInit, float radiusInit); 
-	Vector3f getPos();
-	Vector3f getVel();
-	Vector3f getAcc();
+	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInt, Eigen::Vector3f accInt, float massInit,float radiusInit);
+	Body(Eigen::Vector3f posInit, float massInit, float radiusInit); 
+	Eigen::Vector3f getPos();
+	Eigen::Vector3f getVel();
+	Eigen::Vector3f getAcc();
 	float getMass();
 	float getRadius();
 
-	void setMass( Vector3f newMass );
-	void setRadius( Vector3f newRadius );
+	void setMass( Eigen:Vector3f newMass );
+	void setRadius( Eigen::Vector3f newRadius );
 
 	//Need to add the Sensor class
 
@@ -42,7 +42,8 @@ public:
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
-} 
+
+}; 
 
 
 
