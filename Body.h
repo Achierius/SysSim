@@ -7,7 +7,7 @@
 
 class Body{
 public:
-	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInt, Eigen::Vector3f accInt, float massInit,float radiusInit);
+	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit,float radiusInit);
 	Body(Eigen::Vector3f posInit, float massInit, float radiusInit); 
 	Eigen::Vector3f getPos();
 	Eigen::Vector3f getVel();
@@ -20,24 +20,24 @@ public:
 
 	//Need to add the Sensor class
 
-	void addSensor();
-	void addSensor(int placeAfter);
+	void addSensor(Sensor newSensor);
+	void addSensor(int placeAfter, Sensor newSensor);
 	void reorderSensors(int sensorNo, int placeAfter);
 	void removeSensor(int sensorNo);
 
-	void getSensor(int sensorNo);
+	Sensor* getSensor(int sensorNo);
 	void getSensorValue(int sensorNo);
 	
 	//Need to add the Thruster class
 
-	void addThruster();
-	void addThruster(int placeAfter);
+	void addThruster(Thruster newThruster);
+	void addThruster(int placeAfter, Thruster newThruster);
 	void reorderThrusters(int thrusterNo, int placeAfter);
 	void removeThruster(int thrusterNo);
 
 	void changeThrust(int thrusterNo, double percent);
 	Eigen::Vector3f calculateThrustVector();
-	void getThruster(int thrusterNo);
+	Thruster* getThruster(int thrusterNo);
 
 
 	//Add in Controllers later as well as Estimators
