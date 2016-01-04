@@ -38,13 +38,16 @@ void addThruster(Thruster newThruster){
 	Thrusters.push_back(newThruster);
 }
 void addSensor(int placeAfter, Sensor newSensor){
-	std::vector<Sensor>::iterator itr = Sensors.begin();
-	for(int i = 0; i < placeAfter; i++){ itr++; }
-	Sensors.insert(itr, newSensor);
+	Sensors.insert(Sensors.begin()+(n-1), newSensor);
 }
 void addThruster(int placeAfter, Thruster newThruster){
-	std::vector<Sensor>::iterator itr = Sensors.begin();
-	for(int i = 0; i < placeAfter; i++){ itr++; }
-	Sensors.insert(itr, newSensor);
+	Thrusters.insert(Thrusters.begin()+(n-1), newSensor);
 }
-
+void removeSensor(int sensorNo){
+	Sensors.erase(Sensors.begin()+(n-1);
+}
+void removeThruster(int thrusterNo){
+	Thrusters.erase(Thrusters.begin()+(n-1));
+}
+float getSensorValue(int sensorNo){ 
+	return Sensors[sensorNo-1].
