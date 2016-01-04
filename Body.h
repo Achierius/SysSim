@@ -5,6 +5,8 @@
 #include "Thruster.h"
 #include "Sensor.h"
 
+class Sensor;
+
 class Body{
 public:
 	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit,float radiusInit);
@@ -39,7 +41,7 @@ public:
 	Eigen::Vector3f calculateThrustVector();
 	Thruster* getThruster(int thrusterNo);
 
-
+	friend class Sensor;
 	//Add in Controllers later as well as Estimators
 	//Need to define how state changes over time
 	//Collisions? Later. Assume single, phasing body for now.
