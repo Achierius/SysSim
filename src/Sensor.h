@@ -9,7 +9,9 @@ class Body;
 class Sensor{
 public:
 	template<typename T>;
-	virtual T updateValue();		
+	virtual T updateValue() = 0;	
+	T returnValue();
+	T returnReading();
 	
 	void setVariance(float newVariance);
 	float getVariance();
