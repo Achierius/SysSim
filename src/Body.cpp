@@ -50,4 +50,5 @@ void removeThruster(int thrusterNo){
 	Thrusters.erase(Thrusters.begin()+(n-1));
 }
 float getSensorValue(int sensorNo){ 
-	return Sensors[sensorNo-1].
+	return Sensors[sensorNo-1];
+}

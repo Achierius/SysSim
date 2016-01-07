@@ -13,7 +13,8 @@ public:
 	float getPower();
 
 	void setThrustVariance(Eigen::Vector3f newThrustVariance);
-	Eigen::Vector3f geThrustVariance();
+	Eigen::Vector3f getThrustVariance();
+
 
 
 private:
