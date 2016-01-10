@@ -41,13 +41,15 @@ public:
 	Eigen::Vector3f calculateThrustVector();
 	Thruster* getThruster(int thrusterNo);
 
+	void Update(float dt);
+
 	friend class Sensor;
 	//Add in Controllers later as well as Estimators
 	//Need to define how state changes over time
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
-	std::vector<Sensor> Sensors;
+	std::vector<Sensor> Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
 	std::vector<Thruster> Thrusters;
 	Eigen::Vector3f position;
 	Eigen::Vector3f velocity;
