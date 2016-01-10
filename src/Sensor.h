@@ -5,25 +5,23 @@
 #include "Body.h"
 
 class Body;
- 
+
 class Sensor{
 public:
-	template<typename T>;
-	virtual T updateValue() = 0;	
-	T returnValue();
-	T returnReading();
+	virtual void updateValue();
+	float getValue();
+	float getReading();
 	
 	void setVariance(float newVariance);
 	float getVariance();
 
 	Body* getParent();
-	void setParent(const Body* newParent);
+	void setParent(Body* newParent);
 private:
 	Body* parent;
-	T value;
+	float value;
 	float variance;
 	//The values which lead to the necessity of a covariance matrix in Kalman filtering are dealt with in the actual positional values.
-
 };
 
 

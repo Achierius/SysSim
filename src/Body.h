@@ -17,8 +17,8 @@ public:
 	float getMass();
 	float getRadius();
 
-	void setMass( Eigen:Vector3f newMass );
-	void setRadius( Eigen::Vector3f newRadius );
+	void setMass( float newMass );
+	void setRadius( float newRadius );
 
 	//Need to add the Sensor class
 
@@ -28,7 +28,7 @@ public:
 	void removeSensor(int sensorNo);
 
 	Sensor* getSensor(int sensorNo);
-	void getSensorValue(int sensorNo);
+	float getSensorValue(int sensorNo);
 	
 	//Need to add the Thruster class
 
@@ -47,8 +47,8 @@ public:
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
-	std::Vector<Sensor> Sensors;
-	std::Vector<Thruster> Thrusters;
+	std::vector<Sensor> Sensors;
+	std::vector<Thruster> Thrusters;
 	Eigen::Vector3f position;
 	Eigen::Vector3f velocity;
 	Eigen::Vector3f acceleration;

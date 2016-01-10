@@ -3,12 +3,12 @@
 void Body::setMass(float newMass){
 	mass = abs(newMass);
 }
-void Body::setRadius(float newRadius);{
+void Body::setRadius(float newRadius){
 	radius = abs(newRadius);
 }
 
 
-Body::Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit, float radiusInit);{
+Body::Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit, float radiusInit){
 	position = posInit;
 	velocity = velInit;
 	mass = abs(massInit);
@@ -21,7 +21,7 @@ Eigen::Vector3f Body::getPos(){
 Eigen::Vector3f Body::getVel(){
 	return velocity;
 }
-Eigen::Vector3f Body:getAcc(){
+Eigen::Vector3f Body::getAcc(){
 	return acceleration;
 }
 float Body::getMass(){
@@ -31,24 +31,24 @@ float Body::getRadius(){
 	return radius;
 }
 
-void addSensor(Sensor newSensor){
+void Body::addSensor(Sensor newSensor){
 	Sensors.push_back(newSensor);
 }
-void addThruster(Thruster newThruster){
+void Body::addThruster(Thruster newThruster){
 	Thrusters.push_back(newThruster);
 }
-void addSensor(int placeAfter, Sensor newSensor){
-	Sensors.insert(Sensors.begin()+(n-1), newSensor);
+void Body::addSensor(int placeAfter, Sensor newSensor){
+	Sensors.insert(Sensors.begin()+(placeAfter-1), newSensor);
 }
-void addThruster(int placeAfter, Thruster newThruster){
-	Thrusters.insert(Thrusters.begin()+(n-1), newSensor);
+void Body::addThruster(int placeAfter, Thruster newThruster){
+	Thrusters.insert(Thrusters.begin()+(placeAfter-1), newThruster);
 }
-void removeSensor(int sensorNo){
-	Sensors.erase(Sensors.begin()+(n-1);
+void Body::removeSensor(int sensorNo){
+	Sensors.erase(Sensors.begin()+(sensorNo-1));
 }
-void removeThruster(int thrusterNo){
-	Thrusters.erase(Thrusters.begin()+(n-1));
+void Body::removeThruster(int thrusterNo){
+	Thrusters.erase(Thrusters.begin()+(thrusterNo-1));
 }
-float getSensorValue(int sensorNo){ 
-	return Sensors[sensorNo-1];
+float Body::getSensorValue(int sensorNo){ 
+	return Sensors[sensorNo-1].getReading();
 }

@@ -2,15 +2,17 @@
 
 #include <ctime>
 #include <cmath>
-
-T Sensor::returnValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
+void Sensor::updateValue(){
+	value = 2;
+}
+float Sensor::getValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
 	return value;
 }
-T Sensor::returnReading(){
+float Sensor::getReading(){
 	return value; //NEEDS TO INCORPORATE VARIANCE AAAAAH
 }
 
-void Sensor::setVariance(float newVariance(){
+void Sensor::setVariance(float newVariance){
 	variance = newVariance;
 }
 float Sensor::getVariance(){
@@ -20,6 +22,6 @@ float Sensor::getVariance(){
 Body* Sensor::getParent(){
 	return parent;
 }
-void Sensor::setParent(const Body* newParent){ //Do I need const here?
+void Sensor::setParent(Body* newParent){ //Do I need const here?
 	parent = newParent; //NEEDS TO CHANGE THE COVARIANCE MATRIX WHEN I ADD THAT	
 }
