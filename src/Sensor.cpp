@@ -2,9 +2,6 @@
 
 #include <ctime>
 #include <cmath>
-void Sensor::updateValue(){
-	value = 2;
-}
 float Sensor::getValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
 	return value;
 }

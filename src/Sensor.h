@@ -8,7 +8,7 @@ class Body;
 
 class Sensor{
 public:
-	virtual void updateValue();
+	virtual void updateValue()=0;
 	float getValue();
 	float getReading();
 	

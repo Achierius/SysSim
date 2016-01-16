@@ -31,13 +31,13 @@ float Body::getRadius(){
 	return radius;
 }
 
-void Body::addSensor(Sensor newSensor){
+void Body::addSensor(Sensor* newSensor){
 	Sensors.push_back(newSensor);
 }
 void Body::addThruster(Thruster newThruster){
 	Thrusters.push_back(newThruster);
 }
-void Body::addSensor(int placeAfter, Sensor newSensor){
+void Body::addSensor(int placeAfter, Sensor* newSensor){
 	Sensors.insert(Sensors.begin()+(placeAfter-1), newSensor);
 }
 void Body::addThruster(int placeAfter, Thruster newThruster){
@@ -52,7 +52,7 @@ void Body::removeThruster(int thrusterNo){
 }
 
 float Body::getSensorValue(int sensorNo){ 
-	return Sensors[sensorNo-1].getReading();
+	return Sensors[sensorNo-1]->getReading();
 }
 
 Eigen::Vector3f Body::calculateThrustVector(){

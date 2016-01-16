@@ -22,8 +22,8 @@ public:
 
 	//Need to add the Sensor class
 
-	void addSensor(Sensor newSensor);
-	void addSensor(int placeAfter, Sensor newSensor);
+	void addSensor(Sensor* newSensor);
+	void addSensor(int placeAfter, Sensor* newSensor);
 	void reorderSensors(int sensorNo, int placeAfter);
 	void removeSensor(int sensorNo);
 
@@ -49,7 +49,7 @@ public:
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
-	std::vector<Sensor> Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
+	std::vector<Sensor*> Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
 	std::vector<Thruster> Thrusters;
 	Eigen::Vector3f position;
 	Eigen::Vector3f velocity;
