@@ -1,6 +1,6 @@
 #ifndef _BODY_H
 #define _BODY_H
-#include <Eigen/Eigen/Dense>
+#include <Eigen/Dense>
 #include <Vector>
 #include "Thruster.h"
 #include "Sensor.h"

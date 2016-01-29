@@ -1,7 +1,7 @@
 #include "Body.h"
 #include "Thruster.h"
 #include "Sensor.h"
-#include <Eigen/Eigen/Dense>
+#include <Eigen/Dense>
 #include <Vector>
 
 class World{

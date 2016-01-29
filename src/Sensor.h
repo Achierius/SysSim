@@ -1,7 +1,7 @@
 #ifndef _SENSOR_H
 #define _SENSOR_H
 
-#include <Eigen/Eigen/Dense>
+#include <Eigen/Dense>
 #include "Body.h"
 
 class Body;

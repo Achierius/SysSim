@@ -3,7 +3,7 @@
 #include "Thruster.h"
 #include "Body.h"
 
-#include <Eigen/Eigen/Dense>
+#include <Eigen/Dense>
 
 using namespace Eigen;
 

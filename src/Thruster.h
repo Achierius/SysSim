@@ -1,7 +1,7 @@
 #ifndef _THRUSTER_H
 #define _THRUSTER_H
 
-#include <Eigen/Eigen/Dense>
+#include <Eigen/Dense>
 
 class Thruster{
 public:
