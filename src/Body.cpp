@@ -1,18 +1,18 @@
 #include "Body.h"
 
 void Body::setMass(float newMass){
-	mass = abs(newMass);
+	mass = std::abs(newMass);
 }
 void Body::setRadius(float newRadius){
-	radius = abs(newRadius);
+	radius = std::abs(newRadius);
 }
 
 
 Body::Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit, float radiusInit){
 	position = posInit;
 	velocity = velInit;
-	mass = abs(massInit);
-	radius = abs(radiusInit);
+	mass = std::abs(massInit);
+	radius = std::abs(radiusInit);
 }
 
 Eigen::Vector3f Body::getPos(){
@@ -51,7 +51,7 @@ void Body::removeThruster(int thrusterNo){
 	Thrusters.erase(Thrusters.begin()+(thrusterNo-1));
 }
 
-float Body::getSensorValue(int sensorNo){ 
+float Body::getSensorValue(int sensorNo){
 	return Sensors[sensorNo-1]->getReading();
 }
 
@@ -63,7 +63,7 @@ Eigen::Vector3f Body::calculateThrustVector(){
 	}
 	return plc;
 }
-		
+
 void Body::Update(float dt){
 	acceleration = this->calculateThrustVector()/this->getMass();
 	position+=dt*velocity+dt*dt/2*acceleration;
