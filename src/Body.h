@@ -9,16 +9,16 @@ class Sensor;
 
 class Body{
 public:
-	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit,float radiusInit);
-	Body(Eigen::Vector3f posInit, float massInit, float radiusInit);
-	Eigen::Vector3f getPos();
-	Eigen::Vector3f getVel();
-	Eigen::Vector3f getAcc();
-	float getMass();
-	float getRadius();
+	Body(Eigen::Vector3d posInit, Eigen::Vector3d velInit, double massInit,double radiusInit);
+	Body(Eigen::Vector3d posInit, double massInit, double radiusInit);
+	Eigen::Vector3d getPos();
+	Eigen::Vector3d getVel();
+	Eigen::Vector3d getAcc();
+	double getMass();
+	double getRadius();
 
-	void setMass( float newMass );
-	void setRadius( float newRadius );
+	void setMass( double newMass );
+	void setRadius( double newRadius );
 
 	//Need to add the Sensor class
 
@@ -28,7 +28,7 @@ public:
 	void removeSensor(int sensorNo);
 
 	Sensor* getSensor(int sensorNo);
-	float getSensorValue(int sensorNo);
+	double getSensorValue(int sensorNo);
 
 	//Need to add the Thruster class
 
@@ -38,10 +38,10 @@ public:
 	void removeThruster(int thrusterNo);
 
 	void changeThrust(int thrusterNo, double percent);
-	Eigen::Vector3f calculateThrustVector();
+	Eigen::Vector3d calculateThrustVector();
 	Thruster* getThruster(int thrusterNo);
 
-	void Update(float dt);
+	void Update(double dt);
 
 	friend class Sensor;
 	//Add in Controllers later as well as Estimators
@@ -51,11 +51,11 @@ public:
 private:
 	std::vector<Sensor*> Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
 	std::vector<Thruster> Thrusters;
-	Eigen::Vector3f position;
-	Eigen::Vector3f velocity;
-	Eigen::Vector3f acceleration;
-	float radius;
-	float mass;
+	Eigen::Vector3d position;
+	Eigen::Vector3d velocity;
+	Eigen::Vector3d acceleration;
+	double radius;
+	double mass;
 
 
 };

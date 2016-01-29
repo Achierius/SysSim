@@ -1,6 +1,6 @@
 #include "World.h"
 
-World::World(float initdT){
+World::World(double initdT){
 	dT = initdT = 0 ? 0.001 : abs(initdT);
 }
 World::Update(){

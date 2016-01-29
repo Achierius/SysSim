@@ -5,22 +5,22 @@
 
 class Thruster{
 public:
-	void setThrust(Eigen::Vector3f newThrust);
-	Eigen::Vector3f viewThrust(); //Just gives the Thrust vector
-	Eigen::Vector3f getThrust(); //Calculates with added variance & power
+	void setThrust(Eigen::Vector3d newThrust);
+	Eigen::Vector3d viewThrust(); //Just gives the Thrust vector
+	Eigen::Vector3d getThrust(); //Calculates with added variance & power
 
-	void setPower(float newPower);
-	float getPower();
+	void setPower(double newPower);
+	double getPower();
 
-	void setThrustVariance(Eigen::Vector3f newThrustVariance);
-	Eigen::Vector3f getThrustVariance();
+	void setThrustVariance(Eigen::Vector3d newThrustVariance);
+	Eigen::Vector3d getThrustVariance();
 
 
 
 private:
-	Eigen::Vector3f thrust;
-	float power;
-	Eigen::Vector3f thrustVariance;
+	Eigen::Vector3d thrust;
+	double power;
+	Eigen::Vector3d thrustVariance;
 };
 
 #endif

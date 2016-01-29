@@ -2,17 +2,17 @@
 #include <ctime>
 #include <cmath>
 
-float Sensor::getValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
+double Sensor::getValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
 	return value;
 }
-float Sensor::getReading(){
+double Sensor::getReading(){
 	return value; //NEEDS TO INCORPORATE VARIANCE AAAAAH
 }
 
-void Sensor::setVariance(float newVariance){
+void Sensor::setVariance(double newVariance){
 	variance = newVariance;
 }
-float Sensor::getVariance(){
+double Sensor::getVariance(){
 	return variance;
 }
 

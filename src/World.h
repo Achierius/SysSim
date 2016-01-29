@@ -2,16 +2,16 @@
 #include "Thruster.h"
 #include "Sensor.h"
 #include <Eigen/Dense>
-#include <Vector>
+#include <vector>
 
 class World{
 public:
-	World(float initDT);
+	World(double initDT);
 	Update();
 	void addBody(Body newBody);
 	Body* getBody(int numBody);
 	void removeBody(int numBody);
 private:
-	vector<Body> Bodies;	
-	float dT;
+	vector<Body> Bodies;
+	double dT;
 };
