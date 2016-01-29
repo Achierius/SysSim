@@ -1,7 +1,7 @@
 #include "Sensor.h"
-
 #include <ctime>
 #include <cmath>
+
 float Sensor::getValue(){ //returnValue gives the correct sensor output, while returnReading adds in sensor noise. Or will.
 	return value;
 }
@@ -20,5 +20,5 @@ Body* Sensor::getParent(){
 	return parent;
 }
 void Sensor::setParent(Body* newParent){ //Do I need const here?
-	parent = newParent; //NEEDS TO CHANGE THE COVARIANCE MATRIX WHEN I ADD THAT	
+	parent = newParent; //NEEDS TO CHANGE THE COVARIANCE MATRIX WHEN I ADD THAT
 }
