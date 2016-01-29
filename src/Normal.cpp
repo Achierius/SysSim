@@ -21,7 +21,7 @@ float Norm::getValue(Norm::PDF pdf, float value){
 	return 1/(std::get<1>(pdf)*sqrt(2*pi))*pow(e, -1*pow(value-std::get<0>(pdf),2)/(2*pow(std::get<1>(pdf),2)));
 }
 float Norm::invNorm(Norm::PDF pdf, float percent){ 
-	if(abs(percent) > 1){percent = percent/abs(percent);}
+	if(abs(percent) > 0.5){percent = percent/(2*abs(percent));}
 	int direction = abs(percent)/percent;
 	float dx = std::get<1>(pdf)/500;
 	for(float i = std::get<0>(pdf); true; i+=dx*direction){
