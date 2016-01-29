@@ -1,7 +1,7 @@
 #ifndef _BODY_H
 #define _BODY_H
-#include <Eigen/Dense>
-#include <Vector>
+#include <Eigen/Eigen/Dense>
+#include <vector>
 #include "Thruster.h"
 #include "Sensor.h"
 
@@ -10,7 +10,7 @@ class Sensor;
 class Body{
 public:
 	Body(Eigen::Vector3f posInit, Eigen::Vector3f velInit, float massInit,float radiusInit);
-	Body(Eigen::Vector3f posInit, float massInit, float radiusInit); 
+	Body(Eigen::Vector3f posInit, float massInit, float radiusInit);
 	Eigen::Vector3f getPos();
 	Eigen::Vector3f getVel();
 	Eigen::Vector3f getAcc();
@@ -29,7 +29,7 @@ public:
 
 	Sensor* getSensor(int sensorNo);
 	float getSensorValue(int sensorNo);
-	
+
 	//Need to add the Thruster class
 
 	void addThruster(Thruster newThruster);
@@ -57,8 +57,8 @@ private:
 	float radius;
 	float mass;
 
-		
-}; 
+
+};
 
 
 

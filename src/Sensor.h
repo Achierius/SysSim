@@ -1,7 +1,7 @@
 #ifndef _SENSOR_H
 #define _SENSOR_H
 
-#include <Eigen/Dense>
+#include <Eigen/Eigen/Dense>
 #include "Body.h"
 
 class Body;
@@ -11,7 +11,7 @@ public:
 	virtual void updateValue()=0;
 	float getValue();
 	float getReading();
-	
+
 	void setVariance(float newVariance);
 	float getVariance();
 
