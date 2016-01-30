@@ -1,5 +1,6 @@
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 #include "Normal.h"
 
 bool Norm::fuzzyCompare(float num1, float num2, float absoluteTolerance){
@@ -11,7 +12,7 @@ float Norm::CDF(Norm::PDF pdf, float min, float max){
 	}
 
 	float total = 0;
-	float dx = std::get<1>(pdf)/500;
+	float dx = std::get<1>(pdf)/100;
 	for(float i = min; i < max; i+=dx){
 		total+=(getValue(pdf, i)+getValue(pdf, i+dx))/2*dx;
 	}
@@ -23,16 +24,17 @@ float Norm::getValue(Norm::PDF pdf, float value){
 	return 1/(std::get<1>(pdf)*sqrt(2*pi))*pow(e, -1*pow(value-std::get<0>(pdf),2)/(2*pow(std::get<1>(pdf),2)));
 }
 float Norm::invNorm(Norm::PDF pdf, float percent){ 
-	if(abs(percent) > 0.5){percent = percent/(2*abs(percent));}
-	int direction = abs(percent)/percent;
-	float dx = std::get<1>(pdf)/500;
-	float iterator;
-	for(iterator = std::get<0>(pdf); Norm::CDF(pdf, std::min(iterator, std::get<0>(pdf)), std::max(iterator, std::get<0>(pdf))) > percent; iterator+=dx*direction){
-		if(fuzzyCompare(Norm::CDF(pdf, std::min(iterator, std::get<0>(pdf)), std::max(iterator, std::get<0>(pdf))), percent, 0.05)){
-			return iterator;
+	int sign = Norm::sgn(percent); 
+	float dx = std::get<1>(pdf)/100;
+	float iterator = 2;
+	for(iterator = std::get<0>(pdf); Norm::CDF(pdf, std::get<0>(pdf), iterator) < percent; iterator+=dx){
+		if(Norm::fuzzyCompare(Norm::CDF(pdf, std::get<0>(pdf), iterator), percent, 0.005)){
+			return sign ? iterator : std::get<0>(pdf) - (iterator - std::get<0>(pdf));
 		}	
 
 	}
-	return iterator;	 
+	return sign ? iterator : std::get<0>(pdf) - (iterator - std::get<0>(pdf));	 
 }
-
+template <typename T> int Norm::sgn(T val){
+    return (T(0) < val) - (val < T(0));
+}
