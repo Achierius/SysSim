@@ -1,11 +1,13 @@
 #include <cmath>
+#include <algorithm>
 #include "Normal.h"
 
+bool Norm::fuzzyCompare(float num1, float num2, float absoluteTolerance){
+	return abs(num1-num2)<abs(absoluteTolerance);
+}
 float Norm::CDF(Norm::PDF pdf, float min, float max){
-	if(min > max){ //This swaps the two using the XOR swap algorithm
-		min = min ^ max;
-		max = max ^ min;
-		min = min ^ max;
+	if(min > max){ 
+		std::swap(min, max);
 	}
 
 	float total = 0;
@@ -24,9 +26,13 @@ float Norm::invNorm(Norm::PDF pdf, float percent){
 	if(abs(percent) > 0.5){percent = percent/(2*abs(percent));}
 	int direction = abs(percent)/percent;
 	float dx = std::get<1>(pdf)/500;
-	for(float i = std::get<0>(pdf); true; i+=dx*direction){
-		if(abs(Norm::CDF(pdf, i < std::get<0>(pdf) ? i : std::get<0>(pdf), i > std::get<0>(pdf ? std::get<0>(pdf) : i) - percent) < 0.001){return i;};
+	float iterator;
+	for(iterator = std::get<0>(pdf); Norm::CDF(pdf, std::min(iterator, std::get<0>(pdf)), std::max(iterator, std::get<0>(pdf))) > percent; iterator+=dx*direction){
+		if(fuzzyCompare(Norm::CDF(pdf, std::min(iterator, std::get<0>(pdf)), std::max(iterator, std::get<0>(pdf))), percent, 0.05)){
+			return iterator;
+		}	
+
 	}
-	return 0;	 
+	return iterator;	 
 }
 
