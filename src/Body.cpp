@@ -31,17 +31,18 @@ double Body::getRadius(){
 	return radius;
 }
 
-void Body::addSensor(Sensor* newSensor){
-	Sensors.push_back(newSensor);
+void Body::addSensor(std::unique_ptr<Sensor> newSensor){
+	Sensors.push_back(std::move(newSensor));
 }
-void Body::addThruster(Thruster newThruster){
-	Thrusters.push_back(newThruster);
+void Body::addThruster(std::unique_ptr<Thruster> newThruster){
+	Thrusters.push_back(std::move(newThruster));
 }
-void Body::addSensor(int placeAfter, Sensor* newSensor){
-	Sensors.insert(Sensors.begin()+(placeAfter-1), newSensor);
+void Body::addSensor(int placeAfter, std::unique_ptr<Sensor> newSensor){
+	Sensors.insert(Sensors.begin()+(placeAfter-1), std::move(newSensor));
+
 }
-void Body::addThruster(int placeAfter, Thruster newThruster){
-	Thrusters.insert(Thrusters.begin()+(placeAfter-1), newThruster);
+void Body::addThruster(int placeAfter, std::unique_ptr<Thruster> newThruster){
+	Thrusters.insert(Thrusters.begin()+(placeAfter-1), std::move(newThruster));
 }
 
 void Body::removeSensor(int sensorNo){
@@ -52,14 +53,14 @@ void Body::removeThruster(int thrusterNo){
 }
 
 double Body::getSensorValue(int sensorNo){
-	return Sensors[sensorNo-1]->getReading();
+	return (Sensors[sensorNo-1])->getReading();
 }
 
 Eigen::Vector3d Body::calculateThrustVector(){
 	Eigen::Vector3d plc(0,0,0);
 	//for(Thruster thrust:Thrusters){plc+=thrust.getThrust();} //I can dream, Harold
-	for(std::vector<Thruster>::iterator itr = Thrusters.begin(); itr!=Thrusters.end(); ++itr){
-		plc+=itr->viewThrust();
+	for(auto itr = Thrusters.begin(); itr!=Thrusters.end(); ++itr){
+		plc+=(*itr)->viewThrust();
 	}
 	return plc;
 }
