@@ -1,20 +1,22 @@
 #include "World.h"
+#include <iostream>
+#include <cmath>
 
 World::World(double initdT){
-	dT = initdT = 0 ? 0.001 : abs(initdT);
+  if(initdT == 0){ dT = 0.02; }
+  else {
+    dT = (initdT < 0) ? initdT * -1 : initdT;
+  }
 }
-World::Update(){
+void World::Update(){
 	for(auto itr = Bodies.begin(); itr != Bodies.end(); itr++){
-		itr->Update(dT);
+		(*itr)->Update(dT);
 	}
 }
-World::addBody(Body newBody){
-	Bodies.push_back(newBody);
+void World::addBody(std::unique_ptr<Body> newBody){
+	Bodies.push_back(std::move(newBody));
 }
-World::getBody(int numBody){ //Add guards on this
-	return Bodies[numBody];
-}
-World::removeBody(int numBody){//Same
-	Bodies.erase(numBody);
+void World::removeBody(int numBody){
+	Bodies.erase(Bodies.begin()+(numBody-1));
 }
 
