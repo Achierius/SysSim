@@ -17,5 +17,5 @@ double Sensor::getVariance(){
 }
 
 void Sensor::setParent(std::unique_ptr<Body> newParent){ //Do I need const here?
-	parent = newParent; //NEEDS TO CHANGE THE COVARIANCE MATRIX WHEN I ADD THAT
+	parent = std::move(newParent); //NEEDS TO CHANGE THE COVARIANCE MATRIX WHEN I ADD THAT
 }

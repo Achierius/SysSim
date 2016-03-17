@@ -16,7 +16,7 @@ public:
 	void setVariance(double newVariance);
 	double getVariance();
 
-	void setParent(Body newParent);
+	void setParent(std::unique_ptr<Body> newParent);
 private:
   std::unique_ptr<Body> parent;
 	double value;
