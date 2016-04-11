@@ -5,6 +5,9 @@
 
 class Thruster{
 public:
+  Thruster(Eigen::Vector3d thrust);
+  Thruster();
+
 	void setThrust(Eigen::Vector3d newThrust);
 	Eigen::Vector3d viewThrust(); //Just gives the Thrust vector
 	Eigen::Vector3d getThrust(); //Calculates with added variance & power
