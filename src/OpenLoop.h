@@ -9,11 +9,11 @@
 
 class OpenLoop : Controller {
 public:
-  OpenLoop(std::unique_ptr<Function> regulatingFunction);
+  OpenLoop(Function* regulatingFunction);
 
   void Update(double dT) override;
 
-  void addTarget(std::shared_ptr<Thruster> newTarget) override;
+  void addTarget(Thruster* newTarget) override;
 
   double getCurrentOutput();
 
@@ -23,7 +23,7 @@ private:
 
   void useOutput(double output) override;
 
-  std::unique_ptr<Function> regulatingFunction;
+  Function* regulatingFunction;
 };
 
 #endif//__SYSSIM_OPEN_LOOP_H

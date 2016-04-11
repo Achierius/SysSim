@@ -1,7 +1,7 @@
 #include "OpenLoop.h"
 
-OpenLoop::OpenLoop(std::unique_ptr<Function> regulatingFunction){
-  this->regulatingFunction = std::move(regulatingFunction);
+OpenLoop::OpenLoop(Function* regulatingFunction){
+  this->regulatingFunction = regulatingFunction;
   accTime = 0;
 }
 
@@ -10,7 +10,7 @@ void OpenLoop::Update(double dT){
   useOutput((*regulatingFunction)(accTime));
 }
 
-void OpenLoop::addTarget(std::shared_ptr<Thruster> newTarget){
+void OpenLoop::addTarget(Thruster* newTarget){
   targets.push_back(newTarget);
 }
 
@@ -20,7 +20,7 @@ double OpenLoop::getCurrentOutput(){
 
 void OpenLoop::useOutput(double output){
   this->currentOutput = output;
-  for(std::shared_ptr<Thruster> target : targets){
+  for(Thruster* target : targets){
     target->setPower(output);
   }
 }
