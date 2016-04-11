@@ -16,9 +16,9 @@ public:
 	void setVariance(double newVariance);
 	double getVariance();
 
-	void setParent(std::unique_ptr<Body> newParent);
+	void setParent(Body* newParent);
 private:
-  std::unique_ptr<Body> parent;
+  Body* parent;
 	double value;
 	double variance;
 	//The values which lead to the necessity of a covariance matrix in Kalman filtering are dealt with in the actual positional values.

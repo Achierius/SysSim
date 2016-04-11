@@ -23,8 +23,8 @@ public:
 
 	//Need to add the Sensor class
 
-	void addSensor(std::unique_ptr<Sensor> newSensor);
-	void addSensor(int placeAfter, std::unique_ptr<Sensor> newSensor);
+	void addSensor(Sensor* newSensor);
+	void addSensor(int placeAfter, Sensor* newSensor);
 	void reorderSensors(int sensorNo, int placeAfter);
 	void removeSensor(int sensorNo);
 
@@ -33,8 +33,8 @@ public:
 
 	//Need to add the Thruster class
 
-	void addThruster(std::unique_ptr<Thruster> newThruster);
-	void addThruster(int placeAfter, std::unique_ptr<Thruster> newThruster);
+	void addThruster(Thruster* newThruster);
+	void addThruster(int placeAfter, Thruster* newThruster);
 	void reorderThrusters(int thrusterNo, int placeAfter);
 	void removeThruster(int thrusterNo);
 
@@ -50,8 +50,8 @@ public:
 	//Collisions? Later. Assume single, phasing body for now.
 	//Need to set up resistive forces. Air, ground resistance? Gravity? I think those might just be in the world.
 private:
-	std::vector< std::unique_ptr<Sensor> > Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
-	std::vector< std::unique_ptr<Thruster> > Thrusters;
+	std::vector< Sensor* > Sensors; //http://stackoverflow.com/questions/27773640/c-passing-a-list-of-a-class-with-elements-of-a-subclass
+	std::vector< Thruster* > Thrusters;
 	Eigen::Vector3d position;
 	Eigen::Vector3d velocity;
 	Eigen::Vector3d acceleration;

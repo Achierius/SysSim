@@ -31,18 +31,18 @@ double Body::getRadius(){
 	return radius;
 }
 
-void Body::addSensor(std::unique_ptr<Sensor> newSensor){
-	Sensors.push_back(std::move(newSensor));
+void Body::addSensor(Sensor* newSensor){
+	Sensors.push_back(newSensor);
 }
-void Body::addThruster(std::unique_ptr<Thruster> newThruster){
-	Thrusters.push_back(std::move(newThruster));
+void Body::addThruster(Thruster* newThruster){
+	Thrusters.push_back(newThruster);
 }
-void Body::addSensor(int placeAfter, std::unique_ptr<Sensor> newSensor){
-	Sensors.insert(Sensors.begin()+(placeAfter-1), std::move(newSensor));
+void Body::addSensor(int placeAfter, Sensor* newSensor){
+	Sensors.insert(Sensors.begin()+(placeAfter-1), newSensor);
 
 }
-void Body::addThruster(int placeAfter, std::unique_ptr<Thruster> newThruster){
-	Thrusters.insert(Thrusters.begin()+(placeAfter-1), std::move(newThruster));
+void Body::addThruster(int placeAfter, Thruster* newThruster){
+	Thrusters.insert(Thrusters.begin()+(placeAfter-1), newThruster);
 }
 
 void Body::removeSensor(int sensorNo){
