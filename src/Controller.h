@@ -7,13 +7,13 @@
 
 class Controller{
 public:
-	
+
 	virtual void useOutput() = 0;
 	virtual void addTarget(Thruster* newTarget) = 0;
 protected:
 	std::vector<Thruster*> targets;
-	
-	
+
+
 };
 #endif
 
